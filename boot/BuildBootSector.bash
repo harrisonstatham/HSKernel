@@ -5,6 +5,11 @@ function hexDump {
     #xxd "$1.bin"
 }
 
+function getSize {
+
+    stat -f%z ".bin"
+}
+
 
 function main {
 

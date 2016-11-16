@@ -19,8 +19,5 @@ times 510 -( $ - $$ ) db 0  ; When compiled , our program must fit into 512 byte
                             ; 510 th byte.
 
 
-; Removed 0 before 0xAA55 and added "0x" to denote hex.
-; Would not compile without those additions.
-
 dw 0xAA55                   ; Last two bytes ( one word ) form the magic number ,
                             ; so BIOS knows we are a boot sector.
