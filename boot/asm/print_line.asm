@@ -17,9 +17,15 @@
 print_line:
 
     pusha                           ; Push all the registers onto the stack for safe keeping.
+
     call    print_string            ; Call print_string
 
     ; Print new line character.
+    mov     bx,     0xA
+    call    print_character
+
+    mov     bx,     0xD
+    call    print_character
 
     popa
     ret

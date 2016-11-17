@@ -12,15 +12,14 @@
 [org 0x7c00]
 
 mov     bx,     0x7FFF
-call    print_hex
+call    print_hex2
 
-
-mov     bx,     0xAA55
-call    print_hex
-
-
+%include "asm/print_character.asm"
 %include "asm/print_string.asm"
+%include "asm/print_line.asm"
 %include "asm/print_hex.asm"
+%include "asm/print_registers.asm"
+%include "asm/print_hex2.asm"
 
 HELLO_STRING:
     db  'Hello!', 0

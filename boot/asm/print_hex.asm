@@ -123,7 +123,7 @@ print_hex_D_done:
 
     ; Call the print_string routine.
     mov     bx,     HEX_STRING
-    call    print_string
+    call    print_line
 
     popa
     ret
