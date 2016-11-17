@@ -27,6 +27,7 @@ print_string_loop:
     je      print_string_loop_done      ; If al is zero, then we have reached the end of the string.
                                         ; Jump out of the loop!
 
+                                        ; See print_character.asm
     mov     ah ,    0x0E                ; Print character to screen.
     int     0x10                        ; Call the interrupt.
 
