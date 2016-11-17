@@ -64,7 +64,7 @@ Specify the 'raw' format explicitly to remove the restrictions.
 
 If all went well, a new window should open that looks something like:
 
-![Alt](/QEMU-Basic-Correct-Boot.png "A QEMU window showing correct operation of the boot sector.")
+![Alt](/boot/QEMU-Basic-Correct-Boot.png "A QEMU window showing correct operation of the boot sector.")
 
 
 
