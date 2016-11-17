@@ -22,6 +22,10 @@ mov     al,     [0x7ffe]    ; To prove our stack grows downwards from bp ,
 int     0x10                ; print (al)
 jmp     $                   ; Jump forever.
 
+
+%include "../print_function.asm"
+
+
 ; Padding and magic BIOS number.
 times 510 -( $ - $$ ) db 0
 dw 0xAA55

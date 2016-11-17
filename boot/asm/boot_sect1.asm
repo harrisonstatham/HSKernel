@@ -1,11 +1,23 @@
 ;
-; A simple boot sector program that loops forever.
+; Boot Sector
+;
+; @brief        A simple boot sector program that loops forever.
+;
+; @link         https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf
+; @author       Nick Blundell
+; @note         Nick Blundell was the original author of the code.
+;
+; @author       Harrison Statham
+; @note         Harrison Statham only added comments and some other structure.
 ;
 
-;
-; loop:                     ; Modified loop label because it would not compile.
 
-loopLabel:                  ; Define a label , " loop ", that will allow
+
+
+;
+; loop:                     ; Modified loop label because it would not compile - Harrison.
+
+loopLabel:                  ; Define a label , "loopLabel", that will allow
                             ; us to jump back to it , forever.
 jmp loopLabel               ; Use a simple CPU instruction that jumps
                             ; to a new memory address to continue execution.

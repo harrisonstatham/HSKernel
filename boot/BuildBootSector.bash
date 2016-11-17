@@ -1,13 +1,13 @@
 #!/bin/bash
 
 function hexDump {
-    od -t x1 -A n "$1.bin"
+    od -t x1 -A n "bin/$1.bin"
     #xxd "$1.bin"
 }
 
 function getSize {
 
-    stat -f%z ".bin"
+    stat -f%z "bin/$1.bin"
 }
 
 
@@ -24,7 +24,7 @@ function main {
 
     echo "1. Starting build process..."
 
-    nasm "$1.asm" -f bin -o "$1.bin"
+    nasm "asm/$1.asm" -f bin -o "bin/$1.bin"
 
     echo "Finished building binary."
 
@@ -33,7 +33,7 @@ function main {
     echo ""
     echo "2. Running QEMU"
 
-    $QEMU/qemu-system-x86_64 "$1.bin"
+    $QEMU/qemu-system-x86_64 "bin/$1.bin"
 
 }
 
