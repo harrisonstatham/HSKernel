@@ -27,11 +27,45 @@ I am not going to discuss how to install those package managers or the above dep
 Once you have `nasm` and `QEMU` (or `Bochs`) installed on your machine. Then you can run the following:
 
 ~~~~
-// Make BuildBootSector.bash executable from terminal.
+// Make BuildBootSector.bash executable from terminal. You only need to run this once.
 
 chmod +x BuildBootSector.bash
-
-// Run the build script.
-
-./BuildBootSector.bash
 ~~~~
+
+Now you can build:
+~~~~
+./BuildBootSector.bash <name_of_boot_sector_file_no_extension>
+
+Example:
+./BuildBootSector.bash boot_sect1
+~~~~
+
+Upon successful build you should see something like this:
+
+~~~~
+==============================================================
+Welcome to the Build Script for HSKernel Boot Sectors
+
+==============================================================
+1. Starting build process...
+Finished building binary.
+eb  fe  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+*
+00  00  00  00  00  00  00  00  00  00  00  00  00  00  55  aa
+
+
+2. Running QEMU
+WARNING: Image format was not specified for 'bin/boot_sect1.bin' and probing guessed raw.
+Automatically detecting the format is dangerous for raw images, write operations on block 0 will be restricted.
+Specify the 'raw' format explicitly to remove the restrictions.
+~~~~
+
+
+If all went well, a new window should open that looks something like:
+
+![Alt](/QEMU-Basic-Correct-Boot.png "A QEMU window showing correct operation of the boot sector.")
+
+
+
+
