@@ -23,6 +23,7 @@ mov     sp,     bp                  ; way , at 0 x8000
 mov     bx,     0x9000              ; Load 5 sectors to 0 x0000 (ES ):0 x9000 (BX)
 mov     dh,     5                   ; from the boot disk.
 mov     dl,     [BOOT_DRIVE]
+call    print_registers
 call    disk_load
 
 mov     dx,     [0x9000]            ; Print out the first loaded word , which
@@ -33,9 +34,13 @@ mov     dx,     [0x9000 + 512]      ; Also , print the first word from the
 call    print_hex                   ; 2nd loaded sector : should be 0 xface
 jmp     $
 
-%include "print/print_string.asm"   ; Re - use our print_string function
-%include "print/print_hex.asm"      ; Re - use our print_hex function
-%include "disk_load.asm "
+
+%include "asm/print/print_registers.asm"
+%include "asm/print/print_line.asm"
+%include "asm/print/print_character.asm"
+%include "asm/print/print_string.asm"   ; Re - use our print_string function
+%include "asm/print/print_hex.asm"      ; Re - use our print_hex function
+%include "asm/disk_load.asm "
 
 ; Include our new disk_load function
 ; Global variables
@@ -44,7 +49,7 @@ BOOT_DRIVE : db 0
 
 ; Bootsector padding
 times 510 -( $ - $$ ) db 0
-dw 0 xaa55
+dw 0xAA55
 
 ; We know that BIOS will load only the first 512 - byte sector from the disk ,
 ; so if we purposely add a few more sectors to our code by repeating some
