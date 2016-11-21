@@ -33,7 +33,7 @@ function main {
     echo ""
     echo "2. Running QEMU"
 
-$QEMU/qemu-system-x86_64 "bin/$1.bin"
+$QEMU/qemu-system-x86_64 "bin/$1.bin" -full-screen
 }
 
 

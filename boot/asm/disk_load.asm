@@ -29,22 +29,32 @@ disk_load :
 
 
     int     0x13                    ; BIOS interrupt
-    jc      disk_error              ; Jump if error ( i.e. carry flag set )
+    jc      disk_error1              ; Jump if error ( i.e. carry flag set )
     pop     dx                      ; Restore DX from the stack
 
     call    print_registers
 
     cmp     dh,     al              ; if AL ( sectors read ) != DH ( sectors expected )
-    jne     disk_error              ; display error message
+    jne     disk_error2              ; display error message
     ret
 
-disk_error :
+disk_error1:
 
-    mov     bx,     DISK_ERROR_MSG
+    mov     bx,     DISK_ERROR_MSG1
     call    print_string
     jmp     $
 
+disk_error2:
+
+mov     bx,     DISK_ERROR_MSG2
+call    print_string
+jmp     $
+
+
 ; Variables
 
-DISK_ERROR_MSG:
-    db " Disk read error !" , 0
+DISK_ERROR_MSG1:
+db " Disk read error! Could not read disk." , 0
+
+DISK_ERROR_MSG2:
+    db " Disk read error! sectors read != sectors expected" , 0
